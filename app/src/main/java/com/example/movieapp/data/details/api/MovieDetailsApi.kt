@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface DetailsApi {
+interface MovieDetailsApi {
     @GET("movie/{id}?$KEY_AND_LANGUAGE")
     suspend fun getMovieDetails(@Path("id") movieId: Int): Response<Movie>
 

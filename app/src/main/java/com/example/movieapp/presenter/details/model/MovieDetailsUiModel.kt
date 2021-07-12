@@ -4,17 +4,17 @@ import com.example.movieapp.domain.details.model.MovieDetails
 
 data class MovieDetailsUiModel(
     val id: Int,
-    val backdropPath: String,
-    val posterPath: String,
-    val title: String,
-    val budget: Long,
-    val overview: String,
-    val releaseDate: String,
-    val status: String,
-    val revenue: Long,
-    val originalTitle: String,
-    val runtime: Int,
-    val voteAverage: Double
+    val backdropPath: String?,
+    val posterPath: String?,
+    val title: String?,
+    val budget: Long?,
+    val overview: String?,
+    val releaseDate: String?,
+    val status: String?,
+    val revenue: Long?,
+    val originalTitle: String?,
+    val runtime: Int?,
+    val voteAverage: Double?
 )
 
 fun MovieDetails.toUiModel() = MovieDetailsUiModel(

@@ -69,7 +69,7 @@ class DetailsFragment : Fragment() {
         binding.tvTitle.text = movie.title
         binding.tvBudgetValue.text = NumberFormat.getNumberInstance(Locale.US).format(movie.budget)
         binding.tvOverviewDescription.text = movie.overview
-        binding.tvReleaseDateValue.text = movie.releaseDate.replace("-", "/")
+        binding.tvReleaseDateValue.text = movie.releaseDate?.replace("-", "/")
         binding.tvStatusValue.text = movie.status
         binding.tvRevenueValue.text =
             NumberFormat.getNumberInstance(Locale.US).format(movie.revenue)

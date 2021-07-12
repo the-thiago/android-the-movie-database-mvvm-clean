@@ -3,7 +3,7 @@ package com.example.movieapp.data.details.api
 import com.example.movieapp.domain.details.model.MovieDetails
 import com.example.movieapp.domain.details.model.toMovieDetails
 
-class DetailsRepositoryImpl(private val service: DetailsApi) : DetailsRepository {
+class DetailsRepositoryImpl(private val service: MovieDetailsApi) : DetailsRepository {
     override suspend fun getMovieDetails(movieId: Int): MovieDetails {
         val result = service.getMovieDetails(movieId)
         if (result.isSuccessful) {

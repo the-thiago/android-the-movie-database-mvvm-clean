@@ -33,6 +33,10 @@ class MovieAdapter(
         differ.submitList(differ.currentList + list)
     }
 
+    fun submitItems(list: List<MovieUiModel>) {
+        differ.submitList(list)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_movie, parent, false)

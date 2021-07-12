@@ -16,4 +16,7 @@
     <string name="fragment_details_movie_status">Movie status</string>
     <string name="fragment_details_movie_original_title">Movie original title</string>
 
+    <string name="fragment_search_hint">Search…</string>
+    <string name="fragment_search_no_movie_found">No movies found</string>
+    <string name="fragment_search_for_some_movies">Search for some movies!</string>
 </resources>
