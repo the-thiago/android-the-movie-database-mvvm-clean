@@ -16,16 +16,20 @@ class NowPlayingViewModel(
 
     private val _nowPlayingMovies = MutableLiveData<List<MovieUiModel>>()
     val nowPlayingMovies = _nowPlayingMovies as LiveData<List<MovieUiModel>>
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading = _isLoading as LiveData<Boolean>
 
     private var moviesPage = 1
 
     fun getNowPlayingMovies() {
         viewModelScope.launch {
+            _isLoading.value = true
             val moviesList: List<Movie> = getNowPlayingMoviesUseCase(moviesPage)
             moviesPage++
             _nowPlayingMovies.value = moviesList.map { movie ->
                 movie.toUiModel()
             }
+            _isLoading.value = false
         }
     }
 

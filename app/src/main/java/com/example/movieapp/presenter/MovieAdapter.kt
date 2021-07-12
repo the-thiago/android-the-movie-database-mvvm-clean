@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
@@ -15,11 +17,20 @@ class MovieAdapter(
     private val callback: (MovieUiModel) -> Unit
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    private var movies: List<MovieUiModel> = listOf()
+    private val diffCallback = object : DiffUtil.ItemCallback<MovieUiModel>() {
+        override fun areItemsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: MovieUiModel, newItem: MovieUiModel): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    private val differ = AsyncListDiffer(this, diffCallback)
 
     fun setItems(list: List<MovieUiModel>) {
-        movies = movies + list
-        notifyDataSetChanged()
+        differ.submitList(differ.currentList + list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -29,10 +40,10 @@ class MovieAdapter(
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movies[position])
+        holder.bind(differ.currentList[position])
     }
 
-    override fun getItemCount() = movies.size
+    override fun getItemCount() = differ.currentList.size
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivImageMovie: ImageView = itemView.findViewById(R.id.ivImageMovie)
@@ -46,8 +57,7 @@ class MovieAdapter(
             tvVoteAverage.text = movie.voteAverage.toString()
             itemView.setOnClickListener { callback.invoke(movie) }
 
-            Glide
-                .with(itemView)
+            Glide.with(itemView)
                 .load("${BASE_IMAGE_URL}${movie.posterPath}")
                 .placeholder(R.drawable.ic_movie_image_placeholder)
                 .centerCrop()

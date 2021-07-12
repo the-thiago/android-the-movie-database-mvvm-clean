@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface MovieApi {
+interface NowPlayingApi {
     @GET(GET_MOVIES_URL)
     suspend fun getMovies(@Query("page") page: Int): Response<NowPlayingMoviesResponse>
 

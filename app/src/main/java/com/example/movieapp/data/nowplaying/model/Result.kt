@@ -13,9 +13,7 @@ data class Result(
 )
 
 fun Result.toMovie() = Movie(
-    backdropPath = this.backdrop_path,
     id = this.id,
-    originalTitle = this.original_title,
     posterPath = this.poster_path,
     releaseDate = this.release_date,
     title = this.title,

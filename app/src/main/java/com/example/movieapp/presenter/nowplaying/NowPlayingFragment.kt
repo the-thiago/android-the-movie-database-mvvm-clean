@@ -76,12 +76,23 @@ class NowPlayingFragment : Fragment() {
             adapter = this@NowPlayingFragment.adapter
             addOnScrollListener(this@NowPlayingFragment.scrollListener)
         }
-        viewModel.nowPlayingMovies.observe(viewLifecycleOwner) {
-            if (it != null) {
-                adapter.setItems(it)
+        setObservers()
+        viewModel.getNowPlayingMovies()
+    }
+
+    private fun setObservers() {
+        viewModel.nowPlayingMovies.observe(viewLifecycleOwner) { moviesList ->
+            if (moviesList != null) {
+                adapter.setItems(moviesList)
             }
         }
-        viewModel.getNowPlayingMovies()
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                binding.loadingGroup.visibility = View.VISIBLE
+            } else {
+                binding.loadingGroup.visibility = View.GONE
+            }
+        }
     }
 
     private fun clickItem(movieUiModel: MovieUiModel) {

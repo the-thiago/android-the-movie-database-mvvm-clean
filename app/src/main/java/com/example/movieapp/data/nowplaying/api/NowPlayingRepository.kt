@@ -4,7 +4,7 @@ import com.example.movieapp.data.nowplaying.model.toMovie
 import com.example.movieapp.domain.nowplaying.model.Movie
 
 class NowPlayingRepositoryImpl(
-    private val service: MovieApi
+    private val service: NowPlayingApi
 ) : NowPlayingRepository {
     override suspend fun getNowPlayingMovies(moviesPage: Int): List<Movie> {
         val result = service.getMovies(moviesPage)
