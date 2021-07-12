@@ -29,7 +29,7 @@ class MovieAdapter(
 
     private val differ = AsyncListDiffer(this, diffCallback)
 
-    fun setItems(list: List<MovieUiModel>) {
+    fun addItems(list: List<MovieUiModel>) {
         differ.submitList(differ.currentList + list)
     }
 

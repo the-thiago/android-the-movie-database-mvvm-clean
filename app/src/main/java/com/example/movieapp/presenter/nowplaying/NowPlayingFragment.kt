@@ -83,7 +83,7 @@ class NowPlayingFragment : Fragment() {
     private fun setObservers() {
         viewModel.nowPlayingMovies.observe(viewLifecycleOwner) { moviesList ->
             if (moviesList != null) {
-                adapter.setItems(moviesList)
+                adapter.addItems(moviesList)
             }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
