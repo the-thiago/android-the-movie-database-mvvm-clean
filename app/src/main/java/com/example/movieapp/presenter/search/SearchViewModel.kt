@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.domain.nowplaying.model.SearchMoviesUseCase
+import com.example.movieapp.domain.nowplaying.SearchMoviesUseCase
 import com.example.movieapp.presenter.nowplaying.model.MovieUiModel
 import com.example.movieapp.presenter.nowplaying.model.toUiModel
 import kotlinx.coroutines.Job

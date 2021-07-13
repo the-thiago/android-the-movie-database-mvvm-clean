@@ -19,8 +19,8 @@ import com.example.movieapp.domain.favorites.GetLocalMovies
 import com.example.movieapp.domain.favorites.GetLocalMoviesUseCase
 import com.example.movieapp.domain.nowplaying.GetNowPlayingMovies
 import com.example.movieapp.domain.nowplaying.GetNowPlayingMoviesUseCase
-import com.example.movieapp.domain.nowplaying.model.SearchMovies
-import com.example.movieapp.domain.nowplaying.model.SearchMoviesUseCase
+import com.example.movieapp.domain.nowplaying.SearchMovies
+import com.example.movieapp.domain.nowplaying.SearchMoviesUseCase
 import com.example.movieapp.presenter.details.DetailsViewModel
 import com.example.movieapp.presenter.favorites.FavoritesViewModel
 import com.example.movieapp.presenter.nowplaying.NowPlayingViewModel
